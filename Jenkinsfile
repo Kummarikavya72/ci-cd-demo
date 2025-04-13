@@ -12,7 +12,7 @@ pipeline {
             stage('Bulid Docker Image') {
                steps {
                  script {
-                     dockerImage = docker.build("kummarikavya/ci-cd-demo")
+                     dockerImage = docker.build("kummarikavya/cicd-node-app")
                  }
               }
            }
