@@ -12,14 +12,14 @@ pipeline {
             stage('Bulid Docker Image') {
                steps {
                  script {
-                     dockerImage = docker.build("kummarikavya/cicd-node-app")
+                     dockerImage = docker.build("kummarikavya/ci-cd-demo")
                  }
               }
            }
            stage('Push to DockerHub') {
               steps {
-                 withDockerRegistry([ credentialsId: 'dockerhub', url: ' ']) {
-              script {
+               script {
+               docker.withRegistry('https://index.docker.io/v1/', 'ci-cd-demo') {
                  dockerImage.push("latest")
               }
            }
